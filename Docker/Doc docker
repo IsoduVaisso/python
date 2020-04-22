@@ -1,0 +1,61 @@
+# CHEAT SHEET
+
+## Build
+__Build an image from the Dockerﬁle in the current directory and tag the image:__
+```bash
+docker build -t myimage:1.0 .
+```
+__List all images that are locally stored with the Docker Engine:__
+```bash
+docker image ls
+```
+__Delete an image from the local image store:__
+
+```bash
+docker image rm alpine:3.4
+```
+## Run
+__Run a container from the Alpine version 3.9 image, name the running container__
+__“web” and expose port 5000 externally, mapped to port 80 inside the container:__
+```bash
+docker container run --name web -p 5000:80 alpine:3.9
+```
+__Stop a running container through SIGTERM:__
+```bash
+docker container stop web
+```
+__Stop a running container through SIGKILL:__
+```bash
+docker container kill web
+```
+__List the networks:__
+```bash
+docker network ls
+```
+## Share
+__Pull an image from a registry:__
+```bash
+docker pull myimage:1.0
+```
+__Retag a local image with a new image name and tag:__
+```bash
+docker tag myimage:1.0 myrepo/ myimage:2.0
+```
+__Push an image to a registry:__
+```bash
+docker push myrepo/myimage:2.0
+```
+__List the running containers (add --all to include stopped containers):__
+```bash
+docker container ls
+```
+__Delete all running and stopped containers:__
+```bash
+docker container rm -f $(docker ps -aq)
+```
+__Print the last 100__
+__lines of a container’s logs:__
+
+```bash
+docker container logs --tail 100 web
+```
